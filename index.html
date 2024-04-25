@@ -15,17 +15,17 @@
             height: 100vh;
             margin: 0;
             background: #c7b39b url(cards/back.jpg); /* Цвет фона и путь к файлу */
-            color: #0a0a0a;
+            color: #fdfdfd;
         }
         .cards-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            width: 80%;
+            width: 60%;
             gap: 20px;
         }
         .card {
-            width: 100px;
+            width: 90px;
             height: 150px;
             background-color: #f0f0f0;
             border-radius: 10px;
@@ -66,7 +66,7 @@
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #080808;
             color: white;
             border: none;
             border-radius: 5px;
@@ -77,7 +77,7 @@
 
     .selected-card {
         width: 100px; /* Установите желаемую ширину */
-        height: 150px; /* Установите желаемую высоту */
+        height: 140px; /* Установите желаемую высоту */
         background-size: cover; 
         background-position: center;
 
@@ -88,14 +88,14 @@
 </head>
 <body>
     
-    <h1>Выберите 3 карты</h1>
+    <h1 style="font-family: Arial;">Выберите 3 карты</h1>
     <div id="card-names"></div>
 
     <div class="cards-container">
         <!-- Add 6 card elements here -->
     </div>
     <div id="selected-cards"></div>
-    <button id="continue-button">Continue</button>
+    <button id="continue-button">Продолжить</button>
 
     <script>
         
@@ -116,11 +116,11 @@
             "cards/card21.jpeg"];
     
     
-        const cardBackImage = "cards/10157-2.jpg";
+        const cardBackImage = "cards/12314.png";
     
     
         // Create 6 card elements
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 7; i++) {
             const card = document.createElement('div');
             card.classList.add('card');
             card.style.backgroundImage = `url(${cardBackImage})`; // рубашка карты
@@ -136,10 +136,10 @@
                     if (selectedCards.length === 3) {
                         // Display selected cards in a row
                         selectedCards.forEach(card => {
-                            const selectedCard = document.createElement('div');
-                            selectedCard.classList.add('selected-card');
-                            selectedCard.style.backgroundImage = `url(${card})`;
-                            selectedCardsContainer.appendChild(selectedCard);
+                            // const selectedCard = document.createElement('div');
+                            // selectedCard.classList.add('selected-card');
+                            // selectedCard.style.backgroundImage = `url(${card})`;
+                            // selectedCardsContainer.appendChild(selectedCard);
                         });
                         selectedCardsContainer.style.visibility = 'visible';
                         continueButton.style.visibility = 'visible';
