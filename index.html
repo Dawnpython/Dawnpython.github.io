@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Reading</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: #c7b39b url(cards/back.jpg); /* Цвет фона и путь к файлу */
+            color: #0a0a0a;
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 80%;
+            gap: 20px;
+        }
+        .card {
+            width: 100px;
+            height: 150px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+            transform-style: preserve-3d;
+            background-size: cover; /* Масштабирует изображение, чтобы заполнить контейнер */
+            background-position: center;
+        }
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+        .card-front {
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-back {
+            background-color: #333;
+            transform: rotateY(180deg);
+        }
+        #selected-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            visibility: hidden;
+        }
+        #continue-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            visibility: hidden;
+        }
+
+
+    .selected-card {
+        width: 100px; /* Установите желаемую ширину */
+        height: 150px; /* Установите желаемую высоту */
+        background-size: cover; 
+        background-position: center;
+
+
+    }
+
+    </style>
+</head>
+<body>
+    <h1>Выберите 3 карты</h1>
+    <div id="card-names"></div>
+
+    <div class="cards-container">
+        <!-- Add 6 card elements here -->
+    </div>
+    <div id="selected-cards"></div>
+    <button id="continue-button">Continue</button>
+
+    <script>
+        const cardsContainer = document.querySelector('.cards-container');
+        const selectedCardsContainer = document.getElementById('selected-cards');
+        const continueButton = document.getElementById('continue-button');
+        let selectedCards = [];
+    
+    
+        const cardImages = [
+            "cards/card0.jpeg",
+            "cards/card1.jpeg",
+            "cards/card2.jpeg","cards/card3.jpeg","cards/card4.jpeg","cards/card5.jpeg","cards/card6.jpeg","cards/card7.jpeg",
+            "cards/card8.jpeg","cards/card9.jpeg","cards/card10.jpeg","cards/card11.jpeg","cards/card12.jpeg","cards/card13.jpeg","cards/card14.jpeg",
+            "cards/card15.jpeg","cards/card16.jpeg","cards/card17.jpeg","cards/card18.jpeg","cards/card19.jpeg","cards/card20.jpeg",
+            "cards/card21.jpeg"];
+    
+    
+        const cardBackImage = "cards/10157-2.jpg";
+    
+    
+        // Create 6 card elements
+        for (let i = 0; i < 6; i++) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.style.backgroundImage = `url(${cardBackImage})`; // рубашка карты
+            cardsContainer.appendChild(card);
+    
+            card.addEventListener('click', () => {
+                if (selectedCards.length < 3 && !card.classList.contains('flipped')) {
+                    card.classList.add('flipped');
+                    const cardImage = getRandomCardImage();
+                    card.style.backgroundImage = `url(${cardImage})`;
+                    selectedCards.push(cardImage.split("/").pop()); // имя файла карты
+    
+                    if (selectedCards.length === 3) {
+                        // Display selected cards in a row
+                        selectedCards.forEach(card => {
+                            const selectedCard = document.createElement('div');
+                            selectedCard.classList.add('selected-card');
+                            selectedCard.style.backgroundImage = `url(${card})`;
+                            selectedCardsContainer.appendChild(selectedCard);
+                        });
+                        selectedCardsContainer.style.visibility = 'visible';
+                        continueButton.style.visibility = 'visible';
+                    }
+                }
+            });
+        }
+        
+
+
+
+
+        function getRandomCardImage() {
+            const randomIndex = Math.floor(Math.random() * cardImages.length);
+            return cardImages[randomIndex];
+        }
+    </script>
+</body>
+</html>
+
+
