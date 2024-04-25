@@ -152,7 +152,17 @@
             const randomIndex = Math.floor(Math.random() * cardImages.length);
             return cardImages[randomIndex];
         }
+
+        continueButton.addEventListener('click', () => {
+    // Отправка данных в Telegram
+        Telegram.WebApp.sendData(JSON.stringify(selectedCards));
+
+    // Закрытие Web App
+        Telegram.WebApp.close();
+});
+
     </script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </body>
 </html>
 
