@@ -97,6 +97,9 @@
     <button id="continue-button">Continue</button>
 
     <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+
         const cardsContainer = document.querySelector('.cards-container');
         const selectedCardsContainer = document.getElementById('selected-cards');
         const continueButton = document.getElementById('continue-button');
