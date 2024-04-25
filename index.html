@@ -19,7 +19,7 @@
         }
         .cards-container {
             display: flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             justify-content: center;
             width: 80%;
             gap: 20px;
@@ -87,6 +87,7 @@
     </style>
 </head>
 <body>
+    
     <h1>Выберите 3 карты</h1>
     <div id="card-names"></div>
 
@@ -97,6 +98,7 @@
     <button id="continue-button">Continue</button>
 
     <script>
+        
 
 
         const cardsContainer = document.querySelector('.cards-container');
@@ -118,7 +120,7 @@
     
     
         // Create 6 card elements
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 5; i++) {
             const card = document.createElement('div');
             card.classList.add('card');
             card.style.backgroundImage = `url(${cardBackImage})`; // рубашка карты
@@ -147,8 +149,8 @@
         }
         
 
-        let tg = window.Telegram.WebApp;
-        tg.expand();
+        
+        
 
 
         function getRandomCardImage() {
