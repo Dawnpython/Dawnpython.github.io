@@ -17,13 +17,23 @@
             background: #c7b39b url(cards/back.jpg); /* Цвет фона и путь к файлу */
             color: #fdfdfd;
         }
+        /* .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 60%;
+            gap: 20px;
+        } */
         .cards-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             width: 60%;
             gap: 20px;
-        }
+            }
+
+
+
         .card {
             width: 90px;
             height: 150px;
@@ -35,6 +45,8 @@
             transform-style: preserve-3d;
             background-size: cover; /* Масштабирует изображение, чтобы заполнить контейнер */
             background-position: center;
+            flex-basis: 20%;
+
         }
         .card.flipped {
             transform: rotateY(180deg);
